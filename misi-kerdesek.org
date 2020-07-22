@@ -1,0 +1,5 @@
+- [ ] tmux docker-ben mas path-ot inicializal. hogy lehet megnezni a bash path inicializalasat?
+- [ ] hogy csinaljam hogy a ghc --make ne szemetelje ossze a gitemet?
+
+- [X] Az agda docker sajat userrel menti ki a fileokat, az enyem meg rootkent. Miert?
+
