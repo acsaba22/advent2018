@@ -17,9 +17,8 @@ splitLines ('\n' : tail) =
 splitLines (c : tail) = appendToLines c (splitLines tail)
 
 
--- toInt_ accepts digits only
--- TODO Misi kerdes: lehet itt a :: utan a valtozoknak nevet adni. Pl valami ilyesmi
--- toInt_ :: String -> (prefixValue: Int) -> Int
+-- toInt_ s ferfixValue -> value
+-- s should be digits only
 toInt_ :: String -> Int -> Int
 toInt_ [] pref = pref
 toInt_ (c : s) pref
@@ -56,8 +55,6 @@ takeFirst n (x:xs) = x : takeFirst (n-1) xs
 takeFirst n [] = []
 
 
--- TDOO Misi kerdes: itt a original-t mindig atadom parameterben, ez fogja mindig ujrahasznalni a stack-et?
--- Jobb lenne-e ugy ha az original-t inkabb valami globalisabb ertekbe tenni hogy csak 1x legyen meg? (Pl ez a forever_ lambdaba legyen)
 forever_ :: [a] -> [a] -> [a]
 forever_ original [] = forever_ original original
 forever_ original (x:xs) = x : forever_ original xs
@@ -76,18 +73,17 @@ prefSum_ prefVal (x:xs) =
 prefSum :: [Int] -> [Int]
 prefSum xs = 0 : prefSum_ 0 xs
 
--- TODO Misi kerdes hogy csinalom meg infixre?
-contains :: Int -> [Int] -> Bool
-contains _ [] = False
-contains y (x:xs)
+inside :: Int -> [Int] -> Bool
+inside _ [] = False
+inside y (x:xs)
   | x == y = True
-  | otherwise = contains y xs
+  | otherwise = y `inside` xs
 
--- TODO Misi ugyanaz a kerdes mint az elejen, hogy adok neveket nekik.
+-- firstRepeat tail_of_values previously_seen_values -> first_repeated_value
 firstRepeat_ :: [Int] -> [Int]-> Int
 firstRepeat_ [] prevs = error "No repeats found"
 firstRepeat_ (x:xs) prevs =
-  let seen = contains x prevs
+  let seen = x `inside` prevs
   in
     if seen
     then x
@@ -107,8 +103,8 @@ p2 s = firstRepeat (prefSum (forever (toIntList s)))
 -- - [ ] array-okrol beszeljunk kicsit
 
 main = do
-  content <- readFile("input.txt")
-  putStr("P1 = ")
-  print(p1 content)
-  putStr("P2 = ")
-  print(p2 content)
+  content <- readFile "input.txt"
+  putStr "P1 = "
+  print $ p1 content
+  putStr "P2 = "
+  print $ p2 content
