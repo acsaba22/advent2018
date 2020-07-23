@@ -1,6 +1,3 @@
--- TODO Misi kerdes: constant deklaralas style guide?
--- kell erre egyaltalan konstans vagy hasznaljabb lejjebb igy?
-
 import Data.List
 
 -- Counts consecutive equal characters
