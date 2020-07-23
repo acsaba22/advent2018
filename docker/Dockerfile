@@ -41,6 +41,11 @@ RUN ln -s /home/acsaba/.history .history \
 # TODO haskell emacs-ot beallitani
 # https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
 # https://github.com/haskell/haskell-mode/blob/master/README.md
+
+# TODO cabal install regex
+# cabal update
+# cabal install --lib regex-posix
+
 ################################################################################
 
 

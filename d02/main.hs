@@ -49,7 +49,7 @@ findDups ss =
 -- most azt csinalom hogy valtoztatgatom a programot es a consolba latom az elozo futas vegeredmenyet.
 -- Van valami mas workaround?
 p2 content =
-  head $ foldl (++) [] $ (map findDups) . genRemoved . lines $ content where
+  head $ foldl (++) [] $ (map findDups) . genRemoved . lines $ content
 
 main = do
   content <- readFile "input.txt"
